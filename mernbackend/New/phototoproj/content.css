@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+.len {
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+}
+nav .iit{
+  font-family: 'Raleway', sans-serif;
+}
+
+.blue {
+  display: grid;
+  padding-left: 55px;
+  padding-right: 55px;
+  grid-gap: 7px;
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+  grid-template-columns: auto auto auto;
+  margin: 40px;
+}
+.orange {
+  text-align: left;
+}
+.item1 {
+  border: 2px solid rgba(220, 220, 220, 0.847);
+  padding-left: 15px;
+}
+.item2 {
+  border: 2px solid rgba(220, 220, 220, 0.847);
+}
+.item3 {
+  border: 2px solid rgba(220, 220, 220, 0.847);
+  padding-right: 15px;
+}
+
+#fir {
+  border: 10px black;
+}
+h1 {
+  color: DodgerBlue;
+  padding: 2px;
+
+  font-family: 'Playfair Display', serif;
+}
+.nav-item a h4{
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color:black;
+  font-weight:900;
+}
+.nav2:hover {
+  border-bottom: 5px outset black;
+}
+.nav-item a h4:hover{
+  text-decoration:underline;
+  color:crimson;
+}
+.red {
+  text-align: center;
+  margin: 40px;
+}
+.green {
+  text-align: center;
+  margin: 40px;
+}
+.yellow {
+  text-align: center;
+  text-decoration: underline;
+  margin: 40px;
+}

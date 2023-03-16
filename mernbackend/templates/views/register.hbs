@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{>headerregister}}
+  <body>
+    {{>navbar}} <br><br><br><br>
+    
+
+    <div class="bod">
+      <div class="contair" id="contair">
+        <div class="form-contair sign-up-contair">
+          <form action="/register" class="cl" method="post"> 
+            <h1><b>REGISTRATION</b></h1>
+            <input
+              type="text"
+              name="firstname"
+              id="fname"
+              required
+              placeholder="ENTER FIRST NAME"
+            /><br>
+            <input
+              type="text"
+              name="lastname"
+              id="Lname"
+              required
+              placeholder="ENTER LAST NAME"
+            /><br>
+            <label class="radio inline">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-4">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      checked
+                    />Male
+                  </div>
+                  <div class="col-4">
+                    <input type="radio" name="gender" value="female" />Female
+                  </div>
+                  <div class="col-4">
+                    <input type="radio" name="gender" value="other" />Other
+                  </div>
+                </div>
+              </div>
+            </label><br>
+            <input
+              type="text"
+              name="mobileno"
+              id="MOBILE"
+              required
+              placeholder="ENTER CONTACT NO."
+              maxlength="10"
+            /><br>
+            <input
+              type="text"
+              name="rollno"
+              id="ID"
+              required
+              placeholder="ENTER ROLL NO."
+              maxlength="13"
+            /><br>
+            <input
+              type="email"
+              name="emailid"
+              placeholder="Enter Email"
+              id="email"
+              required
+            /><br>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Password"
+              id="myInput"
+              required
+            /><br>
+            <input
+              type="password"
+              name="confirmpassword"
+              placeholder="Confirm Password"
+              id="myInput"
+              required
+            /><br>
+            <button type="submit" class="btn btn-lg">Register</button>
+          </form>
+        </div>
+        <div class="form-contair sign-in-contair">
+          <form action="/register" class="cl" method="post">
+            <h1><b>REGISTRATION</b></h1><br><br>
+            <input
+              type="text"
+              name="firstname"
+              id="fname"
+              required
+              placeholder="ENTER FIRST NAME"
+            /><br>
+            <input
+              type="text"
+              name="lastname"
+              id="Lname"
+              required
+              placeholder="ENTER LAST NAME"
+            /><br>
+            <label class="radio inline">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-4">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      checked
+                    />Male
+                  </div>
+                  <div class="col-4">
+                    <input type="radio" name="gender" value="female" />Female
+                  </div>
+                  <div class="col-4">
+                    <input type="radio" name="gender" value="other" />Other
+                  </div>
+                </div>
+              </div>
+            </label><br>
+            <input
+              type="text"
+              name="mobileno"
+              id="MOBILE"
+              required
+              placeholder="ENTER CONTACT NO."
+              maxlength="10"
+            /><br>
+            <input
+              type="text"
+              name="rollno"
+              id="ID"
+              required
+              placeholder="ENTER ROLL NO."
+              maxlength="13"
+            /><br>
+            <input
+              type="email"
+              name="emailid"
+              placeholder="Enter Email"
+              id="email"
+              required
+            /><br>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Password"
+              id="myInput"
+              required
+            /><br>
+            <input
+              type="password"
+              name="confirmpassword"
+              placeholder="Confirm Password"
+              id="myInput"
+              required
+            /><br>
+            <button style="margin-top:5px,font-size:12px" type="submit" class="btn btn-lg">Register</button>
+          </form>
+        </div>
+        <div class="overlay-contair">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <div>
+                <h2>Already Register <br />LOGIN NOW</h2>
+                <a href="/login" target="_blank">
+                  <button class="button"><span>LOGIN</span></button>
+                </a>
+              </div>
+              <br /><br />
+              <button class="press" id="sign">SLIDE</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <div>
+                <h2>Already Register <br />LOGIN NOW</h2>
+                <a href="/login" target="_blank">
+                  <button class="button"><span>LOGIN</span></button>
+                </a>
+              </div>
+              <br /><br />
+              <button class="press" id="signup">SLIDE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="showsmall">
+      <h2>Already Register <br />LOGIN NOW</h2>
+      <a href="/login" target="_blank">
+        <button class="button"><span>LOGIN</span></button>
+      </a>
+    </div>
+    <br><br>
+    {{>footer}}
+    <script>
+      const signupb = document.getElementById("signup");
+      const signinb = document.getElementById("sign");
+      const contair = document.getElementById("contair");
+
+      signupb.addEventListener("click", () => {
+        contair.classList.add("right-panel-active");
+        res.render("index");
+      });
+      signinb.addEventListener("click", () => {
+        contair.classList.remove("right-panel-active");
+      });
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>

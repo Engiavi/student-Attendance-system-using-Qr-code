@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>headerindex}}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+<body>
+  {{>navbar}} <br><br><br>
+  <div class="display-1 h1"
+    style="text-align:center;text-decoration-line: underline;font-family: 'Playfair Display', serif;">The QRCode </div>
+  <hr class="bg-info shadow-lg" />
+  <hr class="bg-info shadow-lg" />
+  <hr class="bg-info shadow-lg" />
+  <button class="btn btn-warning" id="run-button">excel</button>
+  <button class="btn btn-warning" id="download-button">download</button>
+
+  <div style="text-align:center;"><img src="{{ qrCodeImage }}" alt="QR code">
+    <button class="btn btn-warning" onclick="downloadImage()">Download Image</button>
+  </div>
+  {{>footer}}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.1/xlsx.full.min.js"></script>
+  <script>
+    const ap = "{{first}}"
+    document.getElementById("download-button").addEventListener("click", function () {
+      var fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.style.display = "none";
+      document.body.appendChild(fileInput);
+      fileInput.addEventListener("change", function () {
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+        reader.onload = function () {
+          var data = reader.result;
+          var blob = new Blob([data]);
+          var a = document.createElement("a");
+          a.style = "display: none";
+          document.body.appendChild(a);
+          var url = window.URL.createObjectURL(blob);
+          a.href = url;
+          a.download = file.name;
+          a.click();
+          window.URL.revokeObjectURL(url);
+        };
+        reader.readAsArrayBuffer(file);
+      });
+      fileInput.click();
+    });
+    const bu = document.getElementById("run-button");
+    bu.onclick = () => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("post", "/run_excel");
+      xhr.send();
+
+      xhr.onload = () => {
+        if (xhr.responseText) {
+          try {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              console.log(response.results);
+            } else {
+              console.error(response.error);
+            }
+          } catch (e) {
+            console.error("Error parsing JSON response:", e);
+          }
+        } else {
+          console.error("Empty response from server");
+        }
+      };
+
+      xhr.onerror = () => {
+        console.error("Error sending request to server");
+      };
+    };
+function downloadImage() {
+  const link = document.createElement("a");
+  link.download = "qr-code.png";
+  link.href = "{{ qrCodeImage }}";
+  link.click();
+}
+
+  </script>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+
+</html>
